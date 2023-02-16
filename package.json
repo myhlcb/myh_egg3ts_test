@@ -28,12 +28,15 @@
     "@eggjs/tegg-schedule-plugin": "^3.5.2",
     "egg": "^3.11.0",
     "egg-scripts": "^2.17.0",
-    "egg-tracer": "^2.0.0"
+    "egg-sequelize": "^6.0.0",
+    "egg-tracer": "^2.0.0",
+    "mysql2": "^3.1.2",
+    "sequelize-cli": "^6.6.0"
   },
   "devDependencies": {
+    "@eggjs/tsconfig": "1",
     "@types/mocha": "10",
     "@types/node": "18",
-    "@eggjs/tsconfig": "1",
     "egg-bin": "^5.9.0",
     "egg-mock": "^5.5.0",
     "eslint": "^8.31.0",

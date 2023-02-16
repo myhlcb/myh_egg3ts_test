@@ -1,9 +1,3 @@
-# hackernews-tegg
-
-[Hacker News](https://news.ycombinator.com/) showcase using [tegg](https://github.com/eggjs/tegg)
-
-## QuickStart
-
 ### Development
 
 ```bash
@@ -11,7 +5,6 @@ $ npm i
 $ npm run dev
 $ open http://localhost:7001/
 ```
-
 Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
 
 ### Deploy
@@ -31,3 +24,10 @@ $ npm start
 
 - Node.js >= 16.x
 - Typescript >= 4.x
+
+### sequelize
+```
+升级数据库：npx sequelize db:migrate
+回滚 npx sequelize db:migrate:undo
+回滚到初始状态npx sequelize db:migrate:undo:all
+```
