@@ -1,0 +1,52 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "egg": {
+    "typescript": true
+  },
+  "scripts": {
+    "start": "egg-scripts start",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test-local": "egg-bin test",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov",
+    "tsc": "tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "lint": "eslint .",
+    "clean": "tsc -b --clean"
+  },
+  "dependencies": {
+    "@eggjs/tegg": "^3.5.2",
+    "@eggjs/tegg-aop-plugin": "^3.5.2",
+    "@eggjs/tegg-config": "^3.2.3",
+    "@eggjs/tegg-controller-plugin": "^3.5.2",
+    "@eggjs/tegg-eventbus-plugin": "^3.5.2",
+    "@eggjs/tegg-plugin": "^3.5.2",
+    "@eggjs/tegg-schedule-plugin": "^3.5.2",
+    "egg": "^3.11.0",
+    "egg-scripts": "^2.17.0",
+    "egg-tracer": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "10",
+    "@types/node": "18",
+    "@eggjs/tsconfig": "1",
+    "egg-bin": "^5.9.0",
+    "egg-mock": "^5.5.0",
+    "eslint": "^8.31.0",
+    "eslint-config-egg": "^12.1.0",
+    "typescript": "^4.9.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT"
+}
