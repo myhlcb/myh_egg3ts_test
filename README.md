@@ -27,6 +27,7 @@ $ npm start
 
 ### sequelize
 ```
+初始化数据库日志：npx sequelize migration:generate --name=init-users
 升级数据库：npx sequelize db:migrate
 回滚 npx sequelize db:migrate:undo
 回滚到初始状态npx sequelize db:migrate:undo:all
