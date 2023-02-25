@@ -1,10 +1,14 @@
 {
   "extends": "@eggjs/tsconfig",
+  "exclude": ["node_modules","dist"],
   "compilerOptions": {
     "declaration": false,
     "paths": {
       "@/module/*": ["app/module/*"]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
   }
 }

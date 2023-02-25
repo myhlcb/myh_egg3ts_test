@@ -8,11 +8,20 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1676530005910_8638';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = [ 'jwtDecode' ];
 
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+  };
+  config.security = {
+    csrf: {
+      // headerName: 'x-csrf-token', // 自定义请求头
+      enable: false,
+    },
+  };
+  config.jwt = {
+    secret: '123456',
   };
 
   // the return config will combines to EggAppConfig

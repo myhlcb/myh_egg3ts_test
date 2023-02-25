@@ -1,4 +1,14 @@
 {
   "root": true,
-  "extends": "eslint-config-egg/typescript"
+  "extends": "eslint-config-egg/typescript",
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "off",
+      {
+        "args": "none"
+      }
+    ],
+    "@typescript-eslint/no-var-requires":0
+  }
 }

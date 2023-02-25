@@ -4,16 +4,18 @@
   "description": "",
   "private": true,
   "egg": {
-    "typescript": true
+    "typescript": true,
+    "declarations": true
   },
   "scripts": {
     "start": "egg-scripts start",
-    "dev": "egg-bin dev",
+    "dev": "CROSS-ENV EGG_SERVER_ENV=dev egg-bin dev",
+    "local": "egg-bin dev",
     "debug": "egg-bin debug",
     "test-local": "egg-bin test",
     "test": "npm run lint -- --fix && npm run test-local",
     "cov": "egg-bin cov",
-    "tsc": "tsc -p tsconfig.json",
+    "tsc": "ets && tsc -p tsconfig.json",
     "ci": "npm run lint && npm run cov && npm run tsc",
     "lint": "eslint .",
     "clean": "tsc -b --clean"
@@ -26,22 +28,28 @@
     "@eggjs/tegg-eventbus-plugin": "^3.5.2",
     "@eggjs/tegg-plugin": "^3.5.2",
     "@eggjs/tegg-schedule-plugin": "^3.5.2",
-    "egg": "^3.11.0",
+    "cross-env": "^7.0.3",
+    "egg": "^3.15.0",
+    "egg-etag": "^1.2.0",
+    "egg-jwt": "^3.1.7",
+    "egg-router-plus": "^2.0.0",
     "egg-scripts": "^2.17.0",
     "egg-sequelize": "^6.0.0",
     "egg-tracer": "^2.0.0",
     "mysql2": "^3.1.2",
-    "sequelize-cli": "^6.6.0"
+    "os": "^0.1.2",
+    "sequelize-cli": "^6.6.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
-    "@eggjs/tsconfig": "1",
+    "@eggjs/tsconfig": "^1.0.0",
     "@types/mocha": "10",
     "@types/node": "18",
     "egg-bin": "^5.9.0",
     "egg-mock": "^5.5.0",
     "eslint": "^8.31.0",
     "eslint-config-egg": "^12.1.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "engines": {
     "node": ">=16.0.0"

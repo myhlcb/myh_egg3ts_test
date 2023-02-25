@@ -19,6 +19,12 @@ $ npm start
 - Use `npm run lint` to check code style
 - Use `npm test` to run unit test
 - se `npm run clean` to clean compiled js at development mode once
+### 使用pm2
+* npm run ci
+* cp server.js package.json ./dist/
+* cd ./dist
+* yarn install
+* EGG_SERVER_ENV=dev pm2 start server.js
 
 ### Requirement
 
@@ -28,7 +34,7 @@ $ npm start
 ### sequelize
 ```
 初始化数据库日志：npx sequelize migration:generate --name=init-users
-升级数据库：npx sequelize db:migrate
+升级数据库：npx sequelize db:migrate --env=dev
 回滚 npx sequelize db:migrate:undo
 回滚到初始状态npx sequelize db:migrate:undo:all
 ```

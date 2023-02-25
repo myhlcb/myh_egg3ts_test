@@ -33,6 +33,13 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-sequelize',
   },
+  etag: {
+    package: 'egg-etag',
+  },
+  jwt: {
+    enable: true,
+    package: 'egg-jwt',
+  },
 };
 
 export default plugin;

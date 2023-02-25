@@ -11,7 +11,10 @@ logs/
 *.lock
 *.js
 .eslintcache
+!server.js
 
+dist/
+typings/
 app/**/*.js
 test/**/*.js
 config/**/*.js

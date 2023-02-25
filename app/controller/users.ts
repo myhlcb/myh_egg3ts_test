@@ -8,33 +8,40 @@ function toInt(str) {
 }
 
 class UserController extends Controller {
-  async index() {
-    const ctx = this.ctx;
-    const query = {
-      limit: toInt(ctx.query.limit),
-      offset: toInt(ctx.query.offset),
-    };
-    ctx.body = await ctx.model.User.findAll(query);
+  async info() {
+    const { ctx } = this;
+    const user = ctx.state.user;
+    if (!user) {
+      ctx.throw(400, 'permission denied');
+    }
+    ctx.body = await ctx.model.User.findOne({ where: { id: user.uid },
+      attributes: { exclude: [ 'password' ] },
+    });
   }
 
-  async show() {
-    const ctx = this.ctx;
-    ctx.body = await ctx.model.User.findByPk(toInt(ctx.params.id));
+  async login() {
+    const { ctx, app } = this;
+    const { nickname, password } = ctx.request.body;
+    const user = await ctx.model.User.findOne({ nickname, password });
+    const token = app.jwt.sign({ uid: user.id }, app.config.jwt.secret);
+    ctx.body = { token };
   }
 
   async create() {
     const ctx = this.ctx;
-    const { name, age } = ctx.request.body;
-    const user = await ctx.model.User.create({ name, age });
-    ctx.status = 201;
+    const { nickname, password, cellphone, email } = ctx.request.body;
+    const user = await ctx.model.User.create({ nickname, password, cellphone, email });
     ctx.body = user;
   }
 
   async update() {
-    const ctx = this.ctx;
-    const id = toInt(ctx.params.id);
-    const user = await ctx.model.User.findByPk(id);
+    const { ctx } = this;
+    const user = ctx.state.user;
     if (!user) {
+      ctx.throw(401, 'permission denied');
+    }
+    const userInfo = await ctx.model.User.findByPk(user.id);
+    if (!userInfo) {
       ctx.status = 404;
       return;
     }
@@ -44,18 +51,6 @@ class UserController extends Controller {
     ctx.body = user;
   }
 
-  async destroy() {
-    const ctx = this.ctx;
-    const id = toInt(ctx.params.id);
-    const user = await ctx.model.User.findByPk(id);
-    if (!user) {
-      ctx.status = 404;
-      return;
-    }
-
-    await user.destroy();
-    ctx.status = 200;
-  }
 }
 
 module.exports = UserController;
